@@ -24,6 +24,12 @@
       </button>
     )
   }
+  // TODO : 231026. Prop Types
+  // 중요한 prop을 깜빡하지 않게 propTypes를 설정!
+  Btn.propTypes = {
+    text: PropTypes.string.isRequired,
+    fontSize: PropTypes.number.isRequired,
+  }
   function App() {
     return (
       <div>

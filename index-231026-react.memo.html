@@ -25,11 +25,16 @@
       </button>
     )
   }
-  // TODO : 231026. Prop Types
+  // TODO : 231026. React.memo
+  // React.memo는 re-render시 props가 바뀌지 않는 컴포넌트는 새로고침 안된다!(다시 그릴 필요가 없는 컴포넌트는 가만히!)
+  const MemorizedBtn = React.memo(Btn)
   function App() {
+    const [value, setValue] = React.useState("Save Changes");
+    const changeValue = () => setValue("Revert Changes")
     return (
       <div>
-        <btn text="Save Changes" />
+        <MemorizedBtn text={value} onClick={changeValue}/>
+        <MemorizedBtn text="Continue"/>
       </div>
     );
   }

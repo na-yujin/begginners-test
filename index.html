@@ -5,31 +5,35 @@
 </body>
 <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
 
-  function Btn({text, onClick}) {
-    console.log(text, "was rendered")
+  function Btn({text, fontSize = 22}) {
     return (
       <button
-        onClick={onClick}
         style={{
           backgroundColor: "coral",
           color: "white",
           border: 0,
           padding: "10px 20px",
           borderRadius: 8,
-          fontSize: 18
+          fontSize: fontSize,
         }}>
         {text}
       </button>
     )
   }
+  Btn.propTypes = {
+    text: PropTypes.string.isRequired,
+    fontSize: PropTypes.number.isRequired,
+  }
   // TODO : 231026. Prop Types
   function App() {
     return (
       <div>
-        <btn text="Save Changes" />
+        <Btn text="Save Changes" fontSize={18} />
+        <Btn text={"Continue"} />
       </div>
     );
   }
